@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+<style>
+    
+    #profile_img>img
+    {
+        width: 130px;
+        height: 130px;
+        border-radius: 100%;
+        position: absolute;
+        top: 0;
+        
+        left: 0;
+        right:0;
+        margin: auto;
+        z-index: 1;
+        top: 10px;
+    }
+    #profile>#user
+    {
+        position: absolute;
+        font-size: 25px;
+        top: 5px;
+        right: 10px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        background-image: linear-gradient(rgb(255, 255, 255),rgb(155, 155, 155));
+        color: rgb(11, 5, 54);
+        border-radius: 30%;
+        margin: auto;
+    }
+    
+</style>
+
+<div id="profile">
+
+    <p id="user" >{{request.user}}</p>
+    <div id="profile_img"  >
+        <img src="{% static 'p1.jpg' %}" alt="">
+    </div>
+   
+
+</div>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
