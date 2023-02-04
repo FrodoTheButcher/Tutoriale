@@ -1,0 +1,259 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+<style>
+    
+    #profile
+    {
+        position: absolute;
+        height: 100vh;
+            width: 100vw;
+            background-size:cover;
+            background-image:linear-gradient(rgba(94, 90, 90, 0.977),rgba(211, 211, 211, 0.8)),url('/user/static/settings.jpg');
+    }
+    #profile_img>img
+    {
+        width: 80px;
+        height: 80px;
+        border-radius: 40%;
+        position: absolute;
+        top: 40px;
+        right:0;
+        left: 1500px;
+        margin: auto;
+        z-index: 1;
+       
+    }
+    #profile_img>svg
+    {
+        width: 80px;
+        height: 80px;
+        border-radius: 40%;
+        position: absolute;
+        top: 40px;
+        width: 50px;
+        right:150px;
+        left: 1510px;
+        margin: auto;
+        z-index: 1;
+        transition: all 0.5s;
+    }
+    #profile>#user
+    {
+        position: absolute;
+        top: 40px;
+        right:10px;
+        font-size: 30px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: rgb(142, 141, 144);
+        border-radius: 30%;
+        margin: auto;
+        transform: translateY(-50px);
+    }
+    #user
+    {
+        transition-delay: 0.5s;
+        transform: all 0.5s;
+        position: relative;
+        transform: translateY(50px);
+        display: grid;
+        right: 50px;
+        margin: 0;
+    }
+    #user>p
+    {
+        margin: 0;
+    }
+    #usertag
+    {
+        font-size:20px;
+        color:black;
+      
+    }
+    #sections
+    {
+        position: absolute;
+        top: 190px;
+  
+    }
+  
+ 
+    #sectionone>p,input
+    {
+        position: relative;
+        float: left;
+      top: 60px;
+    }
+  
+    .moverotatedefault
+    {
+        transform:translate(0,0) rotate(-100deg);
+    }
+    #sectionone>p{
+        position: relative;
+        top: 10px;
+        font-size: 30px;
+        left: 68px;
+    }
+    #sectionone>input
+    {
+        width: 500px;
+        height: 40px;
+    }
+   
+   #phone
+   {
+    position: relative;
+    left: 190px!important;
+   }
+   input
+   {
+    padding-left: 12px;
+    border: 3px solid rgb(7, 7, 7);
+   }
+  
+   #section2
+   {
+    position: absolute;
+    top:300px;
+   }
+   #section2>input
+   {
+        width: 500px;
+        height: 40px;
+       
+   }
+   #section2>input,p
+   {
+
+    float:left;
+   }
+   #section2>p
+   {
+    font-size: 30px;
+   }
+   #name
+   {
+    position: relative;
+    left: 78px;
+   }
+   
+   #userdropdown
+   {
+    width: 400px;
+    height: 600px;
+    content: "";
+    background-image: linear-gradient(rgb(240, 237, 237),rgb(208, 211, 213));
+    display: grid;
+    left: 20px;
+    border-radius: 10px;
+    border:3px solid #123 ;
+   }
+   #userdropdown>p
+   {
+   
+  background: -webkit-linear-gradient(#5a5858, #090909);
+  -webkit-background-clip: text;
+ 
+  -webkit-text-fill-color: transparent;
+
+    padding-left: 30px;
+    font-size: 40px;
+    
+   }
+   
+
+   .moverotate
+   {
+        transform:translate(-50%,0) rotate(100deg);
+        cursor:pointer;
+        
+   }
+
+   .hide
+   {
+            visibility:hidden;
+              opacity:0;
+              filter: blur(10px);
+            transform: translateY(-200px);
+            transition: all 0.5s;
+           
+   }
+   .showdown
+   {
+            
+    visibility:visible !important;
+    opacity:1 !important;
+    transform: translateY(-5px) !important;
+    filter: blur(0px);
+
+   }
+    
+</style>
+
+<div id="profile">
+
+    <div id="user" class="hide" >
+    <p  >{{request.user}}</p>
+    <p id="usertag" > Personal account </p>
+        <div  id="userdropdown" >
+            <p>Edit profile</p>
+            <p>Logout</p>
+            <p>Stats</p>
+            <p>Goals</p>
+        </div>
+    </div>
+    <div id="profile_img"  >
+        <svg id="img_svg" onmouseenter=showsetting() onmouseleave=showsetting2() onclick=showdiv() xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="m9.25 22l-.4-3.2q-.325-.125-.612-.3q-.288-.175-.563-.375L4.7 19.375l-2.75-4.75l2.575-1.95Q4.5 12.5 4.5 12.337v-.675q0-.162.025-.337L1.95 9.375l2.75-4.75l2.975 1.25q.275-.2.575-.375q.3-.175.6-.3l.4-3.2h5.5l.4 3.2q.325.125.613.3q.287.175.562.375l2.975-1.25l2.75 4.75l-2.575 1.95q.025.175.025.337v.675q0 .163-.05.338l2.575 1.95l-2.75 4.75l-2.95-1.25q-.275.2-.575.375q-.3.175-.6.3l-.4 3.2Zm2.8-6.5q1.45 0 2.475-1.025Q15.55 13.45 15.55 12q0-1.45-1.025-2.475Q13.5 8.5 12.05 8.5q-1.475 0-2.488 1.025Q8.55 10.55 8.55 12q0 1.45 1.012 2.475Q10.575 15.5 12.05 15.5Z"/></svg>
+        <img src="{% static 'p1.jpg' %}" alt="">
+    </div>
+    
+    <div id="sections" >
+        <div id="sectionone" >
+            <p>Email</p>
+            <input type="text" value="{{email}}" readonly>
+            <p id="phone" >Your username</p>
+            <input type="text" value="{{username}}" readonly>
+        </div>
+        <div id="section2" >
+            <p id="name" >Name</p>
+            <input type="text" value="{{name}}" readonly>
+            <p id="phone" >Second Name</p>
+            <input type="text" value="{{second}}" readonly>
+        </div>
+    </div>
+   
+
+</div>
+
+
+
+<script>
+   function showsetting()
+   {
+        let setting = document.getElementById('img_svg');
+        setting.classList.add('moverotate');
+    
+
+        console.log('1');
+   }
+   function showsetting2()
+   {
+        let setting = document.getElementById('img_svg');
+        setting.classList.remove('moverotate');
+   }
+   
+   function showdiv()
+   {
+    let button = document.getElementById('user');
+    button.classList.toggle('showdown')
+   }
+</script>
+
+
+
+
+
+
+{% endblock %}
