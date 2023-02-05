@@ -162,6 +162,16 @@
     font-size: 40px;
     
    }
+   #section3>input,button
+   {
+    position: relative;
+    top: 500px;
+    bottom: 0;
+    
+    right: 0;
+    margin: auto;
+
+   }
    
 
    .moverotate
@@ -209,6 +219,7 @@
         <img src="{% static 'p1.jpg' %}" alt="">
     </div>
     
+   
     <div id="sections" >
         <div id="sectionone" >
             <p>Email</p>
@@ -222,6 +233,11 @@
             <p id="phone" >Second Name</p>
             <input type="text" value="{{second}}" readonly>
         </div>
+        <div id="section3" >
+            <input type="file" method="POST"  name="img">
+            <button type="submit" >Apply</button>
+        </div>
+       
     </div>
    
 
