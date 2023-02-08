@@ -8,6 +8,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Projects,Review
 from rest_framework import viewsets
+from django.shortcuts import get_object_or_404
+
 
 def register(request):
     if request.user.is_authenticated:
@@ -37,8 +39,13 @@ def test(request):
 
 def produs(request,pk):
     p = Projects.objects.get(id=pk)
-    rew = p.Review.all()
-    return render(request,'produs.html',{'produs':rew})
+    comment = Review.objects.all()
+    found = []
+    for r in comment:
+        if r.project == p:
+            found.append(r)
+    return render(request,'produs.html',{'produs':p,'description':found})
+      
 
 def base(request):
     return render(request,'base.html')

@@ -53,10 +53,20 @@
       
       <li class="list-group-item">{{tag}}</li>
       {% endfor %}
-      {% for r in review %}
-      <li class="list-group-item">{{r}}</li>
-      {% endfor %}
+     
     </ul>
+
+    <p>
+      <p>Comentarii</p>
+      {% for descript in description %}
+      
+      <ul>
+        <li>{{descript.body}}</li>
+        <p>At:{{descript.created}}</p>
+      
+      </ul> 
+       {% endfor %}
+    </p>
     
   </div>
 
