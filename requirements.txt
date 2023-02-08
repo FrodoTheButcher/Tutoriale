@@ -1,2 +1,4 @@
+to be installed in the virtual env:
+pip install : 
 django
 djangorestframework
