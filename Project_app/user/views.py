@@ -2,7 +2,12 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate , login , logout
 from django.contrib.auth.decorators import login_required
 from .forms import CreateUserForm
+from rest_framework.views import APIView
+from rest_framework.response import Response
 # Create your views here.
+from rest_framework import status
+from .models import Projects
+from rest_framework import viewsets
 
 def register(request):
     if request.user.is_authenticated:
@@ -17,6 +22,16 @@ def register(request):
                 return redirect('base')
     return render(request,'users/register.html',{'form':form})
 
+
+def produse(request):
+    produs = Projects.objects.all()
+    context = {'produs':produs}
+    return render(request,'produse.html',context)
+
+
+def produs(request,pk):
+    p = Projects.objects.get(id=pk)
+    return render(request,'produs.html',{'produs':p})
 
 def base(request):
     return render(request,'base.html')
@@ -49,3 +64,6 @@ def account(request):
      name = request.user.first_name
      secondname = request.user.last_name
      return render(request,'users/account.html',{'email':email,'username':username,'name':name,'second':secondname})
+
+
+

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+<p>Our produse</p>
+
+<h1>{{produs.title}}</h1>
+<h1>{{produs.description}}</h1>
+
+<p>with the following tags:</p>
+{% for tag in produs.tags.all %}
+    <span style="border:1px solid grey" >{{tag}}</span>
+{% endfor %}
+
+{% endblock %}
+
+

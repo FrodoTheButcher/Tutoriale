@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>LINK</th>
+    </tr>
+    {% for project in produs %}
+
+        <tr>
+            <td>{{ project.id}}</td>
+            <td>{{ project.title}}</td>
+            <td>{{ project.descripton}}</td>
+            <td> <a href="{%url 'produs' project.id %}">View</a></td>
+
+        </tr>
+    {% endfor %}
+
+   </table>
+
+{% endblock %}
