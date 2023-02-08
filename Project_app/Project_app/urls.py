@@ -26,5 +26,7 @@ urlpatterns = [
     path("logoutuser",views.logoutuser,name='logoutuser'),
     path("account/",views.account,name='account'),
     path('produse.html',views.produse,name='produse'),
-    path('produs/<str:pk>/',views.produs,name='produs')
+    path('produs/<str:pk>/',views.produs,name='produs'),
+    path('test/',views.test,name='test'),
+
 ]

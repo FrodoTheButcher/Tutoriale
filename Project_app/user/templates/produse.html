@@ -1,24 +1,70 @@
 {% extends "base.html" %}
 
 {% block content %}
+<style>
 
-<table>
-    <tr>
-        <th>ID</th>
-        <th>NAME</th>
-        <th>LINK</th>
-    </tr>
-    {% for project in produs %}
+    #baza
+    {
+        position: absolute;
+height: 100vh;
+    width: 100vw;
+    background-size:cover;
+    background-image:linear-gradient(rgba(8, 8, 8, 0.977),rgba(17, 9, 62, 0.8)),url('/user/static/settings.jpg');
+    }
 
-        <tr>
-            <td>{{ project.id}}</td>
-            <td>{{ project.title}}</td>
-            <td>{{ project.descripton}}</td>
-            <td> <a href="{%url 'produs' project.id %}">View</a></td>
+    .table{
+       
+        position: absolute;
+       top: 120px;
+       border-spacing: 30px;
+    }
+    table, th, td {
+         border: 1px solid rgb(252, 250, 250);  
+         transition: all 0.5s;
+      }
 
+      a
+      {
+        text-decoration: none;
+        color: white;
+      }
+
+      td:hover
+      {
+        font-size: 50px;
+        background-color: rgb(79, 76, 73);
+      }
+
+</style>
+<div id="baza" >
+
+
+
+   <table class="table table table-dark table-striped-columns" >
+    <thead>
+      <tr>
+        <tr   >
+            <th>NAME</th>
+            <th>DESCRIERE</th>
+            <th>PRICE</th>
+            <th>LINK</th>
         </tr>
-    {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
 
-   </table>
+        {% for project in produs %}
+        <tr >
+            <td  style="padding:30px; font-size:30px " > {{ project.title}}</td>
+            <td style="padding:30px; font-size:30px ">{{ project.description}}</td>
+            <td style="padding:30px; font-size:30px ">{{ project.price}}</td>
+
+            <td style="padding:30px ; font-size:30px"> <a href="{%url 'produs' project.id %}">View</a></td>
+        </tr>
+         {% endfor %}
+      <tr>
+    </tbody>
+  </table>
+</div>
 
 {% endblock %}

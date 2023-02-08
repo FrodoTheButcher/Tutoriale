@@ -6,7 +6,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 # Create your views here.
 from rest_framework import status
-from .models import Projects
+from .models import Projects,Review
 from rest_framework import viewsets
 
 def register(request):
@@ -29,9 +29,16 @@ def produse(request):
     return render(request,'produse.html',context)
 
 
+def test(request):
+    produs = Projects.objects.all()
+
+    context = {'produs':produs}
+    return render(request,'test.html',context)
+
 def produs(request,pk):
     p = Projects.objects.get(id=pk)
-    return render(request,'produs.html',{'produs':p})
+    rew = p.Review.all()
+    return render(request,'produs.html',{'produs':rew})
 
 def base(request):
     return render(request,'base.html')
