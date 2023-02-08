@@ -1,16 +1,66 @@
 {% extends "base.html" %}
 {% block content %}
 
-<p>Our produse</p>
+<style>
+  .card
+  {
+    position: absolute;
+    top: 0px;
+    margin: auto;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 600px;
+    width: 500px !important;
+    background-image: linear-gradient(rgb(18, 17, 17) ,rgb(250, 250, 250));
+  }
+  .card-body
+  {
+    background-size:cover;
+   background-image:linear-gradient(rgba(243, 243, 243, 0.977),rgba(211, 211, 211, 0.8));
+  }
+  .list-group-item
+  {
+      background-color: black;
+      color: white;
+  }
+  .card-title,.card-text
+  {
+    font-size: 50px;
+    position:relative;
+    text-align: center;
+  }
+  .card-title
+  {
+    color: aliceblue;
+  }
+  .card-text
+  {
+    color: rgb(123, 123, 123);
+  }
+  
+</style>
 
-<h1>{{produs.title}}</h1>
-<h1>{{produs.description}}</h1>
-
-<p>with the following tags:</p>
-{% for tag in produs.tags.all %}
-    <span style="border:1px solid grey" >{{tag}}</span>
-{% endfor %}
+  <div class="card" style="width: 18rem;">
+    <img src="#" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{produs.title}}</h5>
+      <p class="card-text">{{produs.description}}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <p>Tags</p>
+      {% for tag in produs.tags.all %}
+      
+      <li class="list-group-item">{{tag}}</li>
+      {% endfor %}
+      {% for r in review %}
+      <li class="list-group-item">{{r}}</li>
+      {% endfor %}
+    </ul>
+    
+  </div>
 
 {% endblock %}
+
 
 
